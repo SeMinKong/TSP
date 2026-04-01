@@ -2,7 +2,7 @@
 
 **[English Version](./README.en.md)**
 
-**유전 알고리즘(Genetic Algorithm, GA)**과 **시뮬레이션 담금질(Simulated Annealing, SA)**을 활용하여 외판원 문제(Traveling Salesman Problem, TSP)를 해결하는 고성능 솔버입니다. **PyTorch**의 텐서 연산을 통해 GPU 병렬 처리를 구현함으로써, 수만 개의 경로를 동시에 탐색하여 대규모 도시 데이터셋을 획기적으로 빠르게 처리합니다.
+**Genetic Algorithm, GA**과 **Simulated Annealing, SA**을 활용하여 외판원 문제(Traveling Salesman Problem, TSP)를 해결하는 솔버입니다. **PyTorch**의 텐서 연산을 통해 GPU 병렬 처리를 구현함으로써, 수만 개의 경로를 동시에 탐색하여 대규모 도시 데이터셋을 빠르게 처리합니다.
 
 ## 주요 특징
 
