@@ -61,5 +61,8 @@ python simulated_annealing.py
 - **GA**: Fast initial convergence, excellent for exploring broad solution spaces.
 - **SA**: Fine-grained local search, superior at refining the final route during the cooling phase.
 
+> 💡 **Need more details?**
+> For internal tensor broadcasting techniques, the Metropolis acceptance criterion, and OOM handling, please refer to the [Detailed Manual (DETAILS.en.md)](./DETAILS.en.md).
+
 ---
 Built with ❤️ using PyTorch & Meta-heuristics.
