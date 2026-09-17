@@ -2,16 +2,16 @@
 
 **[한국어 버전](./README.md)**
 
-A high-performance solver for the Traveling Salesman Problem (TSP) utilizing **Genetic Algorithm (GA)** and **Simulated Annealing (SA)**. This project leverages **PyTorch** for GPU parallelization, enabling efficient processing of large-scale city datasets with over 50,000 populations.
+I built this Traveling Salesman Problem (TSP) solver with a **Genetic Algorithm (GA)** and **Simulated Annealing (SA)**. PyTorch tensor operations evaluate tens of thousands of candidate routes on the GPU at once.
 
 ## Key Features
 
-- **GPU-Parallel Optimization**: Uses PyTorch tensor operations to evaluate fitness and accept moves for thousands of paths simultaneously, achieving 200x speedup over CPU.
+- **GPU-Parallel Optimization**: Evaluates populations of more than 50,000 candidates with PyTorch. It was about 200 times faster than the previous CPU code.
 - **Dual Algorithm Support**:
   - **Genetic Algorithm (GA)**: Population-based evolution with elite selection and adaptive mutation.
   - **Simulated Annealing (SA)**: Probabilistic search with an adaptive cooling schedule and Metropolis criterion.
 - **Modular Architecture**: Shared utility layer (`tsp_base.py`) for consistent data I/O, distance calculation, and visualization.
-- **Automated Visualization**: Generates high-resolution PNG reports showing the optimized route, starting point, and city distribution.
+- **Result Visualization**: Saves the calculated route, starting point, and city distribution as a PNG.
 
 ## Tech Stack
 
@@ -33,10 +33,10 @@ A high-performance solver for the Traveling Salesman Problem (TSP) utilizing **G
 ## Technical Highlights
 
 ### 1. Massive Parallelism with PyTorch
-Instead of traditional loop-based optimization, I refactored the fitness evaluation and mutation logic into vectorized tensor operations. This allows the GPU to process 50,000+ paths in a single clock cycle, drastically reducing convergence time for complex TSP instances.
+I rewrote fitness evaluation and mutation as vectorized tensor operations instead of per-route loops. This lets the GPU calculate many route lengths together.
 
 ### 2. Adaptive Evolutionary Strategies
-I implemented an elitism strategy in GA to ensure the best discovered route is never lost, combined with a high-probability swap mutation to maintain genetic diversity and avoid local optima.
+The GA carries the top 20% into the next generation and applies adaptive mutation. The SA implementation uses the Metropolis criterion and a cooling schedule to decide whether to accept a candidate route.
 
 ## Quick Start
 
@@ -61,8 +61,4 @@ python simulated_annealing.py
 - **GA**: Fast initial convergence, excellent for exploring broad solution spaces.
 - **SA**: Fine-grained local search, superior at refining the final route during the cooling phase.
 
->  **Need more details?**
-> For internal tensor broadcasting techniques, the Metropolis acceptance criterion, and OOM handling, please refer to the [Detailed Manual (DETAILS.en.md)](./DETAILS.en.md).
-
----
-Built with  using PyTorch & Meta-heuristics.
+Tensor broadcasting, the Metropolis acceptance criterion, and GPU memory handling are documented in the [detailed manual](./DETAILS.en.md).
